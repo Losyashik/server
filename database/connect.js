@@ -1,10 +1,11 @@
-import mysql2 from "mysql2";
+import pg from "pg";
 
-const conn = mysql2.createConnection({
-  host: "http://f0749360.xsph.ru:3306/",
-  database: "f0749360_test_db",
-  user: "f0749360",
-  password: "neugbuagci",
+const pool = new pg.Pool({
+  host: "dpg-ce5a4jcgqg49417uijjg-a",
+  database: "test_db_hulo",
+  user: "test_db",
+  password: "xWFNwDx4MZIcBaQRVcpOe8ImFgPsi4tW",
+  port: "5432",
 });
 
-export default conn;
+export default pool;
