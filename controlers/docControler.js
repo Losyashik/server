@@ -5,7 +5,7 @@ class docsControler {
     const docs = await conn.query(
       "SELECT name, count(id_user) as count from docs group by name order by count DESC;"
     );
-    res.json(docs.row);
+    res.json(docs.rows);
   }
   async getOne(req, res) {
     const { id } = req.params;
