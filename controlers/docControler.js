@@ -3,7 +3,7 @@ import conn from "../database/connect.js";
 class docsControler {
   async getAll(req, res) {
     const docs = await conn.query("SELECT DISTINCT name FROM docs;");
-    let bool = false;
+    console.log(docs);
     let data = docs.rows;
     data.forEach(async (item, index) => {
       const count = await conn.query(
