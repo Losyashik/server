@@ -3,7 +3,7 @@ import userRouter from "./routers/userRouter.js";
 import docRouter from "./routers/docRouter.js";
 
 
-const PORT = process.env.PORT || 3000;;
+const PORT = process.env.PORT || 7070;;
 
 const app = express();
 app.use(express.json());
