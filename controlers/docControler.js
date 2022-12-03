@@ -2,23 +2,10 @@ import conn from "../database/connect.js";
 
 class docsControler {
   async getAll(req, res) {
-    const docs = await conn.query("SELECT DISTINCT name FROM docs;");
-    console.log(docs);
-    let data = docs.rows;
-    data.forEach(async (item, index) => {
-      const count = await conn.query(
-        "SELECT COUNT(id_user) as count FROM docs WHERE name = '" +
-          item.name +
-          "'"
-      );
-      data[index].count = await count.rows[0].count;
-      if (data.length - 1 == index)
-        res.json(
-          data.sort((a, b) => {
-            return b.count - a.count;
-          })
-        );
-    });
+    const docs = await conn.query(
+      "SELECT name, count(id_user) as count from docs group by name order by count DESC;"
+    );
+    res.json(docs.row);
   }
   async getOne(req, res) {
     const { id } = req.params;
